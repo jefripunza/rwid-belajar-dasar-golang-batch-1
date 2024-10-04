@@ -3,58 +3,51 @@ package main
 import (
 	"belajar-dasar-golang/model"
 	"fmt"
+	"strconv"
 )
 
 type Product struct {
-	Name  string
-	Price int
-	Desc  string
+	Name string `json:"name"`
+	Price int `json:"price"`
 }
 
 type Merchant struct {
-	Name     string
-	Products []Product
+	Name string `json:"name"`
+	Products []Product `json:"products"`
 }
 
 func main() {
 	fmt.Println("Hello, World!")
 
-	var username string
-	var password string
-	day := "siang" // siang | malam
-	if day == "siang" {
-		username = "fikri"
-		password = "fikri123"
-	} else {
-		username = "agus"
-		password = "agus123"
-	}
+	var a bool = true     // Boolean
+	var b int = 5         // Integer
+	var c float32 = 3.14  // Floating point number
+	var d string = "Hi!"  // String
 
-	product1 := Product{
-		Name:  "Product 1",
-		Price: 1000,
-		Desc:  "Product 1 description",
-	}
-	fmt.Printf("Product 1 : %+v\n", product1)
+	b_string:= strconv.Itoa(b)
+	fmt.Println(b_string)
 
-	product2 := Product{
-		Name:  "Product 2",
-		Price: 2000,
-		Desc:  "Product 2 description",
+	product_unggulan := Product{
+		Name: "unggulan",
+		Price: 123,
 	}
-	fmt.Printf("Product 2 : %+v\n", product2)
 
 	merchant := Merchant{
-		Name:     "Merchant 1",
-		Products: []Product{product1, product2},
+		Name: "sebelah",
+		Products: []Product{product_unggulan,product_unggulan},
 	}
-	fmt.Printf("Merchant : %+v\n", merchant)
+
+	Tolong = "saya"
+
+	fmt.Printf("Merchant: %+v \n", merchant)
+  
+	fmt.Println("Boolean: ", a)
+	fmt.Println("Integer: ", b)
+	fmt.Println("Float:   ", c)
+	fmt.Println("String:  ", d)
 
 	User := model.User{}
-	status, err := User.CreateUser(username, password)
-	if err != nil {
-		fmt.Println(err) // ada error
-	} else {
-		fmt.Println(status) // success
-	}
+
+	User.CreateUser("rwid", "uyee")
+
 }

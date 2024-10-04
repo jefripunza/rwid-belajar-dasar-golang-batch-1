@@ -1,13 +1,14 @@
 ## VSCODE EXTENSION:
-- go : https://marketplace.visualstudio.com/items?itemName=golang.Go
-- Codeium : ttps://marketplace.visualstudio.com/items?itemName=Codeium.codeium
 
+- go : https://marketplace.visualstudio.com/items?itemName=golang.Go
+- Codeiumn (optional) : https://marketplace.visualstudio.com/items?itemName=Codeium.codeium
 
 ## Use Case
+
 - ToDo App : https://mm.tt/app/map/3456555867?t=7SPmISrCJ1
 
-
 ## STEP MEMBUAT PROJECT BARU (HELLO WORLD)
+
 1. buat project baru, execute : go mod init belajar-dasar-golang
 2. buat file main.go; execute : touch main.go , kenapa harus main.go ? karena basic file golang itu default nya ada di main.go
 3. ketik pkgm, enter ...
