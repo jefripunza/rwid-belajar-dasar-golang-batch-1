@@ -1,53 +1,90 @@
 package main
 
 import (
-	"belajar-dasar-golang/model"
 	"fmt"
-	"strconv"
+	"time"
 )
 
-type Product struct {
-	Name string `json:"name"`
-	Price int `json:"price"`
-}
-
-type Merchant struct {
-	Name string `json:"name"`
-	Products []Product `json:"products"`
-}
-
 func main() {
-	fmt.Println("Hello, World!")
 
-	var a bool = true     // Boolean
-	var b int = 5         // Integer
-	var c float32 = 3.14  // Floating point number
-	var d string = "Hi!"  // String
+	// ----------------------------------------------------- //
+	// Kondisional : if else switch select statement
 
-	b_string:= strconv.Itoa(b)
-	fmt.Println(b_string)
-
-	product_unggulan := Product{
-		Name: "unggulan",
-		Price: 123,
+	// if else
+	human := false
+	if human {
+		fmt.Println("I'm a Human")
+	} else {
+		fmt.Println("I'm not a Human")
 	}
 
-	merchant := Merchant{
-		Name: "sebelah",
-		Products: []Product{product_unggulan,product_unggulan},
+	// switch
+	switch {
+	case human:
+		fmt.Println("I'm a Human")
+	case !human:
+		fmt.Println("I'm not a Human")
+	default:
+		fmt.Println("I don't know")
 	}
 
-	Tolong = "saya"
+	// select statement
+	// Buat channel untuk komunikasi
+	humanChan := make(chan string)
 
-	fmt.Printf("Merchant: %+v \n", merchant)
-  
-	fmt.Println("Boolean: ", a)
-	fmt.Println("Integer: ", b)
-	fmt.Println("Float:   ", c)
-	fmt.Println("String:  ", d)
+	// Jalankan goroutine untuk mengirim pesan ke channel
+	go func() {
+		time.Sleep(3 * time.Second) // Simulasikan proses yang memakan waktu
+		humanChan <- "I'm a Human"  // Kirim pesan ke channel
+	}()
 
-	User := model.User{}
+	// Select statement untuk memilih case yang siap
+	select {
+	case message := <-humanChan: // Tunggu pesan dari goroutine
+		fmt.Println(message)
+	case <-time.After(2 * time.Second): // Timeout jika channel tidak menerima pesan dalam 2 detik
+		fmt.Println("No response, I don't know")
+	}
 
-	User.CreateUser("rwid", "uyee")
+	// ----------------------------------------------------- //
+	// Looping : for, for range, break, continue
+
+	// for
+	for i := 0; i < 5; i++ {
+		if i == 3 {
+			break
+		}
+		fmt.Printf("for %d\n", i)
+	}
+
+	// for range
+	for _, i := range []int{1, 2, 3, 4, 5} {
+		if i == 2 {
+			continue
+		}
+		fmt.Printf("range %d\n", i)
+	}
+
+	// for {
+	// 	fmt.Println("Hello World")
+	// }
+
+	// enum
+
+	// Define a custom type for Color
+	type Color string
+
+	// Define constants for each color
+	const (
+		Red   Color = "RED"
+		Green Color = "GREEN"
+		Blue  Color = "BLUE"
+	)
+
+	// Assign the color
+	var warna Color = Blue
+
+	// Use the color
+	fmt.Println("Selected color:", warna)
 
 }
